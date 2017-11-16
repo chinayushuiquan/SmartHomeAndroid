@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="12">
+
+    <include layout="@layout/top_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight = "1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@drawable/sliding_head_bg"
+        android:gravity="center">
+
+        <kap.com.smarthome.android.ui.view.CircleImageView
+            android:id="@+id/userinfo_user_head_iv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/sliding_default_user_head" />
+
+        <TextView
+            android:id="@+id/sliding_user_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userinfo_user_head_iv"
+            android:layout_marginTop="@dimen/padding_5"
+            android:layout_centerHorizontal="true"
+            android:text="@string/click_change_user_head"
+
+            style="@style/TitleLittleText14"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/padding_20"
+        android:layout_marginRight="@dimen/padding_20"
+        android:layout_weight="6"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/user_id_rl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/MarkText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_10"
+
+                android:text="@string/user_id" />
+
+
+            <TextView
+                android:id="@+id/user_info_user_id"
+                style="@style/MarkText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical"
+                android:layout_marginRight="@dimen/padding_5"
+                android:paddingBottom="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_10"
+
+                android:text="13555667788" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@id/user_info_user_id"
+                android:background="@drawable/gray_line_shape" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/nick_name_rl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_10"
+                style="@style/MarkText12"
+                android:text="@string/user_nickname" />
+
+
+            <TextView
+                android:id="@+id/user_info_user_nick_name"
+                style="@style/MarkText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/arrow_right_black"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_10"
+                android:text="@string/default_nick_name" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@id/user_info_user_nick_name"
+                android:background="@drawable/gray_line_shape" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/phone_number_rl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/MarkText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_10"
+                android:text="@string/user_phone_number" />
+
+
+            <TextView
+                android:id="@+id/user_info_user_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/arrow_right_black"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_10"
+                style="@style/MarkText12"
+                android:text="@string/unbind"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@id/user_info_user_phone_number"
+                android:background="@drawable/gray_line_shape" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/qq_number_rl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/MarkText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_10"
+
+                android:text="@string/user_qq_number" />
+
+
+            <TextView
+                android:id="@+id/user_info_user_qq_number"
+                style="@style/MarkText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/arrow_right_black"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_10"
+
+                android:paddingTop="@dimen/padding_10"
+                android:text="@string/unbind"
+
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@id/user_info_user_qq_number"
+                android:background="@drawable/gray_line_shape" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/wechat_name_rl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/MarkText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_10"
+
+                android:text="@string/user_wechat"
+
+                />
+
+
+            <TextView
+                android:id="@+id/user_info_user_wechat_name"
+                style="@style/MarkText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/arrow_right_black"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_10"
+                android:text="@string/unbind"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@id/user_info_user_wechat_name"
+                android:background="@drawable/gray_line_shape" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/change_password_rl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/MarkText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_10"
+
+                android:paddingTop="@dimen/padding_10"
+
+                android:text="@string/user_change_password" />
+
+
+            <TextView
+                android:id="@+id/user_info_user_change_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/arrow_right_black"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_10" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:background="@color/lighter_gray"
+        />
+
+    <Button
+        android:id="@+id/exit_login"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2"
+        android:text="@string/user_info_exit_account"
+        android:textColor="@color/litter_red"
+        android:background="@color/white"
+        />
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="permission_get_accounts_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_GET_ACCOUNTS</string>
+    <string name="permission_read_phone_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_READ_PHONE_STATE</string>
+    <string name="permission_call_phone_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_CALL_PHONE</string>
+    <string name="permission_camera_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_CAMERA</string>
+    <string name="permission_access_fine_location_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_ACCESS_FINE_LOCATION</string>
+    <string name="permission_access_coarse_location_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_ACCESS_COARSE_LOCATION</string>
+    <string name="permission_read_external_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_READ_EXTERNAL_STORAGE</string>
+    <string name="permission_white_external_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_WRITE_EXTERNAL_STORAGE</string>
+    <string name="permission_recode_audio_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_RECORD_AUDIO</string>
+
+    <string name="pull_to_refresh">下拉可以刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新…</string>
+    <string name="not_updated_yet">暂未更新过</string>
+    <string name="updated_at">上次更新于%1$s前</string>
+    <string name="updated_just_now">刚刚更新</string>
+    <string name="time_error">时间有问题</string>
+
+
+    <!--全局-->
+    <string name="edit">编辑</string>
+    <string name="cancel">取消</string>
+    <string name="done">完成</string>
+    <string name="open_string">打开</string>
+    <string name="close_string">关闭</string>
+    <string name="save">保存</string>
+    <string name="submit">提交</string>
+    <string name="stop_string">停止</string>
+
+
+    <!--首页-->
+    <string name="home_main">首页</string>
+    <string name="home_scenes">场景</string>
+    <string name="home_devices">设备</string>
+    <string name="home_room">房间</string>
+
+    <string name="home_title">柯蒂家庭智能</string>
+
+    <!--房间-->
+    <!--默认房间-->
+    <string name="door1">客厅</string>
+    <string name="door2">卧室</string>
+    <string name="door3">儿童房</string>
+    <string name="door4">阳台</string>
+    <string name="door5">厨房</string>
+    <string name="door6">书房</string>
+    <string name="door7">卫生间</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--登录login-->
+    <string name="login_activity_title">用户登录</string>
+    <string name="password_login">密码登录</string>
+    <string name="sms_login">短信登录</string>
+    <string name="login_account">远程账号</string>
+    <string name="login_password">登录密码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="forget_password">忘记密码?</string>
+    <string name="login_other_method">第三方登录</string>
+
+    <!--用户注册-->
+    <string name="register_phone_number">请输入手机号码</string>
+    <string name="register_verify_code">请输入验证码</string>
+    <string name="register_psd">请输入密码</string>
+    <string name="register_confirm_psd">请确认密码</string>
+    <string name="country_number">+86></string>
+    <string name="get_verify_code">获取验证码</string>
+    <string name="register_account">注册用户</string>
+    <string name="get_verify_code_again">重新发送</string>
+    <string name="get_verify_code_second">秒</string>
+    <string name="step_next">跳过</string>
+
+    <!--选择地区编号-->
+    <string name="chose_local_num">选择地区</string>
+
+
+    <!--  找回密码-->
+    <string name="find_back_psw">找回密码</string>
+    <string name="next_tip">下一步</string>
+
+
+    <!--   主界面-->
+    <string name="comm_use_scenes">常用场景</string>
+    <string name="comm_use_devices">常用设备</string>
+
+    <!--侧滑栏界面-->
+    <string name="user_info">个人信息</string>
+    <string name="system_set">系统设置</string>
+    <string name="about_version">关于版本</string>
+    <string name="authorization_user">用户授权</string>
+
+    <!-- 个人信息界面-->
+    <string name="click_change_user_head">点击更改头像</string>
+    <string name="user_info_exit_account">退出当前账号</string>
+    <string name="user_nickname">昵称</string>
+    <string name="user_id">用户ID</string>
+    <string name="user_phone_number">手机号</string>
+    <string name="user_qq_number">QQ</string>
+    <string name="user_wechat">微信号</string>
+    <string name="user_change_password">修改密码</string>
+    <string name="system_relay_box">中继盒子</string>
+    <string name="system_sync_data">同步数据</string>
+    <string name="cancel_pick_pic">未选取图片</string>
+    <string name="unbind">未绑定</string>
+    <string name="default_nick_name">KOTI之家</string>
+
+    <string name="modify_nick_name">修改昵称</string>
+    <string name="phone_local_number">中国 +86</string>
+
+    <string name="modify_phone_number">修改手机号</string>
+    <string name="modify_qq_number">修改QQ</string>
+    <string name="modify_wechat">修改微信</string>
+    <string name="old_password">旧密码</string>
+    <string name="new_password">新密码</string>
+    <string name="confirm_new_password">确认密码</string>
+
+
+    <!--版本控制信息-->
+    <string name="version_app_name">柯蒂智能家居控制系统</string>
+    <string name="version_hint">版本信息：</string>
+    <string name="version_check">检测更新</string>
+
+
+    <!--设备控制-->
+    <string name="devices_control">设备控制</string>
+    <string name="remote_control">遥控器</string>
+    <string name="other_devices">其他设备</string>
+    <string name="add_devices">添加设备</string>
+    <string name="start_add_devices">点击开始</string>
+    <string name="stop_add_devices">点击结束</string>
+    <string name="select_room">选择房间</string>
+
+    <!--设备名称-->
+    <string name="curtain">窗帘</string>
+    <string name="un_adjust_lamp">吊灯</string>
+    <string name="adjust_lamp">可调灯</string>
+
+    <!--设备编辑-->
+    <string name="device_name">设备名称</string>
+
+
+    <!--遥控设备-->
+    <string name="add_remote_control">添加遥控</string>
+    <string name="choose_rc_template">选择遥控器模板</string>
+    <string name="template_learn">红外学习</string>
+
+    <string name="tv1_btn0">视屏源</string>
+
+    <string name="it_learn_oneLearn">&#160;红外学习第一次!</string>
+    <string name="it_learn_secondLearn">&#160;红外学习第二次!</string>
+
+
+    <!--场景控制-->
+    <string name="scenes_control">场景控制</string>
+    <string name="scenes_control_devices">关联设备：</string>
+    <string name="add_scenes">添加场景</string>
+    <string name="scenes_name">场景名称</string>
+    <string name="scenes_icon">场景图标</string>
+    <string name="devices_list">设备列表</string>
+    <string name="scenes_add_condition">触发条件</string>
+
+    <!-- 房间管理-->
+    <string name="room_control">房间管理</string>
+    <string name="add_room">添加房间</string>
+    <string name="room_name">房间名称</string>
+    <string name="room_type">选择房间</string>
+
+    <string name="add_room_name_notnull">新增房间名称不能为空!</string>
+    <string name="please_chose_room_type">请选择一个房间类型!</string>
+    <string name="add_room_fail">添加房间失败！</string>
+    <string name="delete_room_fail">删除房间失败</string>
+    <string name="update_room_fail">更新房间失败</string>
+
+
+    <string name="linked_devices">关联设备</string>
+    <string name="device_choose_room">搬移到</string>
+
+
+    <!--中继盒子-->
+    <string name="smart_wifi">一键WIFI</string>
+    <string name="add_relay_box">添加中继盒子</string>
+    <string name="relay_box_default_name">中继盒子%1$d</string>
+    <string name="please_input_old_password">请输入旧密码</string>
+    <string name="please_input_new_password">请输入新密码（八位字符）</string>
+    <string name="please_login">请先登录</string>
+    <string name="cancel_check_all">取消全选</string>
+    <string name="check_all">全选</string>
+    <string name="update_relaybox_fail">更改中继盒子失败</string>
+    <string name="relay_name">中继盒子的名称</string>
+    <string name="lamp_off">最暗</string>
+    <string name="lamp_on">最亮</string>
+    <string name="remote_control_type">遥控器类型</string>
+    <string name="match">匹配</string>
+    <string name="match_relay_box">匹配中继盒子</string>
+
+
+
+</resources>

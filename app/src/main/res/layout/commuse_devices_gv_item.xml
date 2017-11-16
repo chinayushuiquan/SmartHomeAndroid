@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/home_device_icon_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="@drawable/home_lamp_off_bg">
+
+        <ImageView
+            android:id="@+id/home_device_icon_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="@dimen/margin_15"
+            android:layout_marginLeft= "@dimen/margin_15"
+            android:background="@drawable/new_device_adjust_lamp"
+            />
+
+        <TextView
+            android:id="@+id/home_device_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/adjust_lamp"
+            android:layout_below="@id/home_device_icon_iv"
+            android:layout_marginTop="@dimen/margin_15"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:textSize="@dimen/text_size_12"
+            />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

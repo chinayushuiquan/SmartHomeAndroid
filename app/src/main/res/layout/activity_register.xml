@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/login_register_activity_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/top_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="11"
+        android:orientation="vertical"
+        >
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_account_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_20"
+        android:textColorHint="@color/white"
+        android:theme="@style/EditTextLineColor"
+        android:hint="@string/login_account"
+        app:hintTextAppearance="@style/HintAppearance"
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/register_account_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/login_account_icon"
+            android:drawableStart="@drawable/login_account_icon"
+            android:drawablePadding="@dimen/padding_10"
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/white"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_20">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_phone_number_layout"
+        android:layout_width="0dp"
+        android:layout_weight="5"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
+        android:hint="@string/register_phone_number"
+        android:background="@null"
+        app:hintTextAppearance="@style/HintAppearance"
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/register_phone_number_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/register_phone_number_icon"
+            android:drawableStart="@drawable/register_phone_number_icon"
+            android:drawablePadding="@dimen/padding_10"
+            android:textSize="@dimen/text_size_14"
+            android:imeOptions="actionNext"
+            android:textColor="@color/white"
+            android:background="@null"
+            android:inputType="phone"
+            android:paddingTop="@dimen/padding_5"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/register_chose_phone_number_local"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:background="@null"
+            android:text="@string/country_number"
+            />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/white_line_shape"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:layout_marginRight="@dimen/margin_20"
+            android:layout_marginTop="@dimen/margin_20"
+            >
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_verification_code_layout"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        app:passwordToggleTint="@color/white"
+        app:passwordToggleEnabled="true"
+        android:textColorHint="@color/white"
+        android:hint="@string/register_verify_code"
+        app:hintTextAppearance="@style/HintAppearance"
+        android:background="@null"
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/register_verifi_code_psw_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/register_verifi_code"
+            android:drawableStart="@drawable/register_verifi_code"
+            android:drawablePadding="@dimen/padding_10"
+            android:imeOptions="actionNext"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14"
+            android:background="@null"
+            android:paddingTop="@dimen/padding_5"
+            android:inputType="number"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+            android:id="@+id/register_get_verification_code_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:textColor="@color/orange"
+            android:textSize="12sp"
+            android:background="@drawable/register_get_verifi_code_shape"
+            android:text="@string/get_verify_code"
+            />
+
+    </LinearLayout>
+
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/white_line_shape"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:layout_marginRight="@dimen/margin_20"
+            />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_psd_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_20"
+        android:textColorHint="@color/white"
+        android:theme="@style/EditTextLineColor"
+        android:hint="@string/register_psd"
+        app:hintTextAppearance="@style/HintAppearance"
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/register_psd_psw_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/login_password_lock_icon"
+            android:drawableStart="@drawable/login_password_lock_icon"
+            android:drawablePadding="@dimen/padding_10"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword"
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/white"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_confirm_psd_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_20"
+        android:textColorHint="@color/white"
+        android:theme="@style/EditTextLineColor"
+        android:hint="@string/register_confirm_psd"
+        app:hintTextAppearance="@style/HintAppearance"
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/register_confirm_psd_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/register_confirm_psd_icon"
+            android:drawableStart="@drawable/register_confirm_psd_icon"
+            android:drawablePadding="@dimen/padding_10"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/white"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/register_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:background="@drawable/login_btn_bg_orange_shape"
+        android:textColor="@color/white"
+        android:text="@string/register"
+        />
+    </LinearLayout>
+
+</LinearLayout>

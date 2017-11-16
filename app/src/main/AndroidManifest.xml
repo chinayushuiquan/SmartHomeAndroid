@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kap.com.smarthome.android"
+    android:revisionCode="1"
+    android:versionName="KOTI-Home_AND_00_V1.0.0.Build20171113">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--允许读取wifi网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true" />
+
+    <application
+        android:name=".mapp.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/m_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/m_icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".ui.activity.LoadingPageActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.MainHomeActivity"
+                  android:launchMode="singleTask"
+            />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.RegisterActivity" />
+        <activity android:name=".ui.activity.ForgetPswOneActivity" />
+        <activity android:name=".ui.activity.ForgetPswTwoActivity" />
+        <activity android:name=".ui.activity.ForgetPswThreeActivity" />
+        <activity android:name=".ui.activity.UserInfoActivity" />
+        <activity android:name=".ui.activity.SystemSetActivity" />
+        <activity android:name=".ui.activity.VersionCheckActivity" />
+        <activity android:name=".ui.activity.AddRfDevicesActivity" />
+        <activity android:name=".ui.activity.AddScenesActivity"
+            android:windowSoftInputMode="stateHidden"
+            />
+        <activity android:name=".ui.activity.AddRoomActivity" />
+        <activity android:name=".ui.activity.AddRemoteControlActivity"/>
+        <activity android:name=".ui.activity.MatchRemoteControlRelayBoxActivity"/>
+        <activity android:name=".ui.activity.RemoteControlTemplateLearnActivity"/>
+        <activity android:name=".ui.activity.RelayBoxActivity" />
+        <activity android:name=".ui.activity.SyncDataActivity" />
+        <activity android:name=".ui.activity.AddRelayBoxActivity" />
+        <activity android:name=".ui.activity.NewAddDevicesEditActivity"/>
+        <activity android:name=".ui.activity.ChoseCountryNumActivity"/>
+        <activity android:name=".ui.activity.SystemSetRegisterActivity"/>
+        <activity android:name=".ui.activity.ModifyNickNameActivity"/>
+        <activity android:name=".ui.activity.ModifyPassWordActivity"/>
+        <activity android:name=".ui.activity.ModifyPhoneNumberActivity"/>
+        <activity android:name=".ui.activity.ModifyQQActivity"/>
+        <activity android:name=".ui.activity.ModifyWeChatActivity"/>
+        <activity android:name=".ui.activity.EditRoomActivity"
+            android:windowSoftInputMode="stateHidden"
+            />
+        <activity android:name=".ui.activity.EditRelayBoxActivity"
+            android:windowSoftInputMode="stateHidden"
+            />
+        <activity android:name=".ui.activity.EditDevicesActivity"
+            android:windowSoftInputMode="stateHidden"
+            />
+        <activity android:name=".ui.activity.DevicesTvControlActivity"/>
+        <activity android:name=".ui.activity.UserAccreditActivity"/>
+        <activity android:name=".ui.activity.UserAccreditDoneActivity"/>
+        <activity android:name=".ui.activity.EditScenesActivity"
+            android:windowSoftInputMode="stateHidden"
+            />
+
+        <receiver android:name=".presenter.broadcast.NetConnectBroadCastReceiver"/>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,123 @@
+<resources   xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/orange</item>
+    </style>
+
+
+    <!-- 输入框的提示Hint的字体颜色-->
+    <style name="HintAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!--15号标题的字体和颜色-->
+    <style name="TitleText15" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+    <!--14号副标题的字体和颜色-->
+    <style name="TitleLittleText14" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+    <!--12号标识的字体和颜色-->
+    <style name="MarkText12" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+
+
+    <!--10号小标识的字体和颜色-->
+    <style name="MakeLittleText10" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+
+    <!--12号hint字体和颜色-->
+    <style name="MakeHintText12" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/hint_text_color</item>
+    </style>
+
+    <!--10号hint字体和颜色-->
+    <style name="MakeHintText10" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/hint_text_color</item>
+    </style>
+
+
+    <!--底部的RedioGroup 样式-->
+    <style name="RadioGroupButtonStyle" >
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@drawable/home_navigation_button_text_color_selector</item>
+    </style>
+
+    <!-- 输入框的下划线的颜色-->
+    <style name="EditTextLineColor" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/orange</item>
+    </style>
+
+
+     <!--从屏幕右边显示的 PopupWindow 显示和消失的动画-->
+    <style name="right_popupWindow_anim">
+        <item name="android:windowEnterAnimation">@anim/popwindow_right_in</item>
+        <item name="android:windowExitAnimation">@anim/popwindow_right_out</item>
+    </style>
+
+    <!--从屏幕底部弹出显示的 PopupWindow 显示和消失的动画-->
+    <style name="bottom_popWindow_anim">
+        <item name="android:windowEnterAnimation">@anim/pop_bottom_enter</item>
+        <item name="android:windowExitAnimation">@anim/pop_bottom_exit</item>
+    </style>
+
+
+    <!--添加的中继盒子的listview item 的Checkbox的样式-->
+    <style name="my_checkbox_style" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_selectors</item>
+    </style>
+
+
+    <style name="common_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!--边框-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">false</item>
+        <!--半透明-->
+        <item name="android:windowNoTitle">true</item>
+        <!--无标题-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--背景透明-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--模糊-->
+    </style>
+
+
+    <style name="device_control_dialog_Theme" parent="android:Theme">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+
+
+
+</resources>

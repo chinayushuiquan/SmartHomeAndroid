@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:background="@drawable/sliding_head_bg">
+
+        <kap.com.smarthome.android.ui.view.CircleImageView
+            android:id="@+id/sliding_user_head_iv"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/sliding_default_user_head"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/sliding_user_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_5"
+            android:layout_below="@+id/sliding_user_head_iv"
+            android:layout_centerHorizontal="true"
+            android:text="@string/user_nickname"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/sliding_user_info_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_5"
+        >
+
+        <Button
+            android:id="@+id/sliding_user_info_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/sliding_user_info"
+            android:background="@color/transparent"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:text="@string/user_info"
+            android:layout_alignParentLeft="true"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/text_color"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/sliding_system_set_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_5"
+        >
+
+        <Button
+            android:id="@+id/sliding_system_set_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/sliding_system_set"
+            android:background="@color/transparent"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:text="@string/system_set"
+
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/text_color"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/sliding_about_version_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_5">
+
+        <Button
+            android:id="@+id/sliding_about_version_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/sliding_about_version"
+            android:background="@color/transparent"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:text="@string/about_version"
+
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/text_color"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/sliding_authorization_user_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_5">
+
+        <Button
+            android:id="@+id/sliding_authorization_user_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/sliding_authorization_user"
+            android:background="@color/transparent"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:text="@string/authorization_user"
+
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/text_color"
+            />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

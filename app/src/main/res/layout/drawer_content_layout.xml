@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/view_frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="11">
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dividing_line"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <RadioButton
+            android:id="@+id/rb1"
+            style="@style/RadioGroupButtonStyle"
+            android:drawableTop="@drawable/home_navigation_main_button_selector"
+            android:text="@string/home_main" />
+
+        <RadioButton
+            android:id="@+id/rb2"
+            style="@style/RadioGroupButtonStyle"
+            android:text="@string/home_devices"
+            android:drawableTop="@drawable/home_navigation_devices_button_selector"
+            />
+
+        <RadioButton
+            android:id="@+id/rb3"
+            style="@style/RadioGroupButtonStyle"
+            android:text="@string/home_scenes"
+            android:drawableTop="@drawable/home_navigation_scenes_button_selector"
+            />
+
+
+        <RadioButton
+            android:id="@+id/rb4"
+            style="@style/RadioGroupButtonStyle"
+            android:text="@string/home_room"
+            android:drawableTop="@drawable/home_navigation_room_button_selector"
+            />
+    </RadioGroup>
+</LinearLayout>

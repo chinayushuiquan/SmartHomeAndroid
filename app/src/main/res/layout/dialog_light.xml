@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_round_white"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+
+        <ImageView
+            android:id="@+id/light_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/device_adjust_lamp" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="6"
+            >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/lamp_off"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
+
+        <SeekBar
+            android:id="@+id/lamp_control_seek_bar"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:max="12"
+            android:thumbOffset="0dip"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/gray_line_shape"
+            />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/lamp_on"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
+        </LinearLayout>
+
+
+        <!--<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp" >
+
+            <Button
+                android:id="@+id/close"
+                style="@style/font_black_common18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:background="@drawable/add_control_sel"
+                android:text="@string/light_close"
+                android:textColor="@drawable/btn_color_sel" />
+
+            <Button
+                android:id="@+id/half"
+                style="@style/font_black_common18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/add_control_sel"
+                android:text="@string/light_half"
+                android:textColor="@drawable/btn_color_sel" />
+
+            <Button
+                android:id="@+id/open"
+                style="@style/font_black_common18"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/add_control_sel"
+                android:text="@string/light_open"
+                android:textColor="@drawable/btn_color_sel" />
+        </RelativeLayout>-->
+    </LinearLayout>
+
+</RelativeLayout>

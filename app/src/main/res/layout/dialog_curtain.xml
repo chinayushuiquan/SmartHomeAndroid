@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:background="@drawable/bg_round_white"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/curtain_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/device_curtain_close" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp" >
+
+            <Button
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_control_selector"
+                android:textColor="@drawable/btn_color_sel"
+                android:textSize="@dimen/text_size_12"
+                android:text="@string/close_string" />
+
+            <Button
+                android:id="@+id/stop"
+                style="@style/MarkText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/btn_control_selector"
+                android:textColor="@drawable/btn_color_sel"
+                android:textSize="@dimen/text_size_12"
+                android:text="@string/stop_string" />
+
+            <Button
+                android:id="@+id/open"
+                style="@style/MarkText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:textColor="@drawable/btn_color_sel"
+                android:background="@drawable/btn_control_selector"
+                android:textSize="@dimen/text_size_12"
+                android:text="@string/open_string" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

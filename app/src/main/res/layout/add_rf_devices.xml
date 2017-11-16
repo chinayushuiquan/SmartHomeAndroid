@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="12">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.5"
+        android:background="@color/yellow"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/top_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/padding_10"
+            android:background="@drawable/devices_search_circle_bg"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/devices_search_circle_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/devices_search_circle" />
+
+            <TextView
+                android:id="@+id/devices_scan_time_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="20"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/devices_search_start_scan_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/padding_20"
+            android:background="@drawable/devices_search_btn_bg"
+            android:text="@string/start_add_devices"
+            android:textColor="@color/white"
+            android:layout_marginBottom="@dimen/padding_10"
+            />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/devices_add_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.5"
+        >
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

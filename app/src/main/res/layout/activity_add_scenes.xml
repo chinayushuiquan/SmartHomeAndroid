@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/scenes_add_devices_drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--内容视图-->
+        <include
+            layout="@layout/add_scenes_main_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!--左侧滑菜单栏-->
+        <include
+            layout="@layout/add_scenes_drawer_layout"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end" />
+
+    </android.support.v4.widget.DrawerLayout>
+
+</RelativeLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_10"
+    >
+
+
+    <ImageView
+        android:id="@+id/devices_search_icon_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:id="@+id/devices_search_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/devices_search_icon_iv"
+        android:layout_marginLeft="@dimen/padding_15"
+
+        style="@style/TitleLittleText14"
+
+        android:text="@string/add_devices"
+        />
+
+    <ImageView
+        android:id="@+id/devices_item_add_icon_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/padding_5"
+        android:background="@drawable/add_icon"
+        />
+
+    <TextView
+        android:id="@+id/devices_search_chose_room_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/devices_item_add_icon_iv"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/padding_15"
+        android:drawableRight="@drawable/arrow_right_black"
+        style="@style/TitleLittleText14"
+
+        android:text="@string/select_room"
+        />
+
+</RelativeLayout>

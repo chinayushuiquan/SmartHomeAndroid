@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_register_activity_bg"
+    android:weightSum="12">
+
+   <include layout="@layout/top_bar_view"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"
+       />
+
+   <ListView
+       android:id="@+id/country_list"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="11"
+       android:scrollbars="none"
+       android:overScrollMode="never"
+       android:fadingEdge="none"
+       android:divider="#DDFFFFFF"
+       android:dividerHeight="1px"
+       android:layout_marginLeft="@dimen/padding_10"
+       android:layout_marginRight="@dimen/padding_10"
+       >
+
+   </ListView>
+
+</LinearLayout>
