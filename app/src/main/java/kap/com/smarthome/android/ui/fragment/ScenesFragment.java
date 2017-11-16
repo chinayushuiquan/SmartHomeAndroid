@@ -108,7 +108,7 @@ public class ScenesFragment extends BaseFragment {
      * @param view
      */
     private void initSwipeRefreshLayout(View view) {
-        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.devices_fragment_swipe_container);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.scenes_fragment_swipe_container);
         mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
