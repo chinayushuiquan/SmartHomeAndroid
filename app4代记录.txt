@@ -1,0 +1,1 @@
+1. UDPResponseBodyBase  是中继盒子返回消息的基类，应该只保存所有JSON返回消息共有的信息字段。
