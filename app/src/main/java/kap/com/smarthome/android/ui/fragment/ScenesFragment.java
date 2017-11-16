@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -114,7 +115,7 @@ public class ScenesFragment extends BaseFragment {
             @Override
             public void onRefresh() {
 
-                List<DeviceData> deviceDatas = new ArrayList<DeviceData>();
+               /* List<DeviceData> deviceDatas = new ArrayList<DeviceData>();
 
                 ServerCommunicationHandle.queryDevices(deviceDatas, new UIHttpCallBack() {
                     @Override
@@ -126,7 +127,13 @@ public class ScenesFragment extends BaseFragment {
                     public void failure(Object object) {
                         mSwipeRefreshLayout.setRefreshing(false);
                     }
-                });
+                });*/
+
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 3000);
 
             }
         });
