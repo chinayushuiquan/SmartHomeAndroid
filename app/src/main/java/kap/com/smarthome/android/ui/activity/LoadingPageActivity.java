@@ -5,6 +5,10 @@ import android.os.Handler;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.baidu.android.pushservice.BasicPushNotificationBuilder;
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +19,7 @@ import kap.com.smarthome.android.communication.bean.base.UDP.UDPReceiverData;
 import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
 import kap.com.smarthome.android.data.bean.Devices;
 import kap.com.smarthome.android.data.bean.Room;
+import kap.com.smarthome.android.presenter.broadcast.PushTestReceiver;
 import kap.com.smarthome.android.presenter.constants.AllConstants;
 import kap.com.smarthome.android.presenter.constants.AllVariable;
 import kap.com.smarthome.android.presenter.control.DataBaseHandle;
@@ -33,6 +38,24 @@ public class LoadingPageActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_init);
+
+        //koti
+        PushManager.startWork(this, PushConstants.LOGIN_TYPE_API_KEY , PushTestReceiver.API_KEY);
+        BasicPushNotificationBuilder bBuilder = new BasicPushNotificationBuilder();
+
+      /*  PushNotificationBuilder pushNotificationBuilder = new PushNotificationBuilder() {
+            @Override
+            public Notification construct(Context context) {
+                return null;
+            }
+        };
+
+        pushNotificationBuilder.setStatusbarIcon(R.mipmap.m_icon);
+        pushNotificationBuilder.setNotificationTitle("收到报警信息");
+        pushNotificationBuilder.setNotificationText("");
+        */
+        PushManager.setDefaultNotificationBuilder(this, bBuilder); //使自定义channel生效
+
 
         /**
          * 加载页面停留3秒，3秒超时后自动跳转到主页面

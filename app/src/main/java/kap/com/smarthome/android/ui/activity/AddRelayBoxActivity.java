@@ -30,7 +30,6 @@ import kap.com.smarthome.android.presenter.utils.JsonUtils;
 import kap.com.smarthome.android.presenter.utils.UUIDUtils;
 import kap.com.smarthome.android.ui.adapter.RelayAddListViewAdapter;
 import kap.com.smarthome.android.ui.view.UIPullRefreshView;
-import kap.com.smarthome.android.ui.view.MyLoadingDialog;
 import kap.com.smarthome.android.ui.view.MyTopBarBuilder;
 
 public class AddRelayBoxActivity extends BaseActivity {
@@ -59,16 +58,9 @@ public class AddRelayBoxActivity extends BaseActivity {
     //添加的中继盒子的个数
     private int udpAddRelayBoxCount;
 
-
     private TextView loginNoteTv;
-
-
     private TextView mSelectAllBoxTv;
-
-
     private boolean  isCheckAll = false;
-
-    private MyLoadingDialog myLoadingDialog ;
 
     /**
      * 执行插入中继盒子到本地数据库的线程
@@ -171,16 +163,20 @@ public class AddRelayBoxActivity extends BaseActivity {
                 }).setRightTextOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        selectRelayBoxes = addListViewAdapter.getmSelectRelayBox();
+
                         //没有添加中继盒子的时候直接返回，不进行任何处理
-                        if(mNewSearchList == null || mNewSearchList.size() < 1){
+                        if(selectRelayBoxes == null || selectRelayBoxes.size() < 1){
+                            Toast.makeText(AddRelayBoxActivity.this, "没有选择中继盒子！", Toast.LENGTH_SHORT).show();
                             return ;
                         }
 
                         //如果没有获取到任何在局域网的盒子信息，也不执行任何操作
                         if(!AllVariable.CONNECT_RELAY){
+                            Toast.makeText(AddRelayBoxActivity.this, "只能在局域网添加中继盒子！", Toast.LENGTH_SHORT).show();
                             return ;
                         }
-
 
                         showLoadingDialog("");
                         //给选定的中继盒子发送添加信息
@@ -194,7 +190,6 @@ public class AddRelayBoxActivity extends BaseActivity {
                                 e.printStackTrace();
                             }
                         }
-
 
                         mDoAddRelayBoxRunnable = new Runnable() {
                             @Override
@@ -344,7 +339,6 @@ public class AddRelayBoxActivity extends BaseActivity {
 
                     @Override
                     public void failure(Object object) {
-                        Toast.makeText(AddRelayBoxActivity.this, "HTTP添加盒子失败", Toast.LENGTH_SHORT).show();
                         setFailDataTag();
                         saveRelayBoxLocalSuccess();
                     }
@@ -374,9 +368,10 @@ public class AddRelayBoxActivity extends BaseActivity {
 
 
     /**
-     * 添加数据失败
+     * 上传数据到云端 失败
      */
     private void  setFailDataTag(){
+
 
     }
 

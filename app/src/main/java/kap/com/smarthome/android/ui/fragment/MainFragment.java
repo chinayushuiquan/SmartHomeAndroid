@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.support.v4.app.Fragment;
+import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -45,11 +44,10 @@ import kap.com.smarthome.android.ui.view.MyTopBarBuilder;
 public class MainFragment extends BaseFragment {
 
     private Activity mActivity;
-    private GridView mScenesGridview;
-    private GridView mDevicesGridview;
+    private GridView mScenesGridView;
+    private GridView mDevicesGridView;
 
     private List<Scenes> mScenesList;
-
     private List<Devices> mDevicesList;
 
     private Devices mCurrentControlDevice = null;
@@ -72,10 +70,18 @@ public class MainFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = getView(inflater, container);
+        return view;
+    }
+
+    @NonNull
+    private View getView(LayoutInflater inflater, ViewGroup container) {
+
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         //初始化常用场景
-        mScenesGridview = (GridView) view.findViewById(R.id.main_scenes_gv);
+        mScenesGridView = (GridView) view.findViewById(R.id.main_scenes_gv);
+
         mScenesList = DataBaseHandle.queryAllScenes();
 
         if(mScenesList.size() > 4){
@@ -83,7 +89,7 @@ public class MainFragment extends BaseFragment {
         }
 
         MainFragmentScenesGvAdapter scenesGvAdapter = new MainFragmentScenesGvAdapter(mActivity , mScenesList);
-        mScenesGridview.setAdapter(scenesGvAdapter);
+        mScenesGridView.setAdapter(scenesGvAdapter);
 
         scenesGvAdapter.setMainHomeScenesControlClickListen(new MainFragmentScenesGvAdapter.MainHomeScenesControlClickListen() {
             @Override
@@ -117,11 +123,11 @@ public class MainFragment extends BaseFragment {
                         });
                     }
                 }
-            }
-        });
+    }
+});
 
         //初始化常用设备
-        mDevicesGridview = (GridView) view.findViewById(R.id.main_devices_gv);
+        mDevicesGridView = (GridView) view.findViewById(R.id.main_devices_gv);
 
         //所有的可以控制的设备
         mDevicesList = BeanDataConvertUtils.getScenesControlDevices(DataBaseHandle.queryAllDevices());
@@ -151,15 +157,15 @@ public class MainFragment extends BaseFragment {
         int allWidth = (int) (135 * mDevicesList.size() * density);
         int itemWidth = (int) (130 * density);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(allWidth, LinearLayout.LayoutParams.MATCH_PARENT);
-        mDevicesGridview.setLayoutParams(params);// 设置GirdView布局参数
-        mDevicesGridview.setColumnWidth(itemWidth);// 列表项宽
-        mDevicesGridview.setHorizontalSpacing(1);// 列表项水平间距
-        mDevicesGridview.setStretchMode(GridView.NO_STRETCH);
-        mDevicesGridview.setNumColumns(4);//总长度
+        mDevicesGridView.setLayoutParams(params);// 设置GirdView布局参数
+        mDevicesGridView.setColumnWidth(itemWidth);// 列表项宽
+        mDevicesGridView.setHorizontalSpacing(1);// 列表项水平间距
+        mDevicesGridView.setStretchMode(GridView.NO_STRETCH);
+        mDevicesGridView.setNumColumns(4);//总长度
         MainFragmentDevicesGvAdapter devicesGvAdapter  =  new MainFragmentDevicesGvAdapter(mActivity, mDevicesList);
-        mDevicesGridview.setAdapter(devicesGvAdapter);
+        mDevicesGridView.setAdapter(devicesGvAdapter);
 
-        mDevicesGridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mDevicesGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 

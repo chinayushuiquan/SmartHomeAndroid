@@ -60,11 +60,11 @@ public class MainHomeActivity extends BaseActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_home);
+
         initView();
         initFirstFragment();
         initListener();
         writeExternalStorage();
-
 
         mNetConnectBroadCastReceiver = new NetConnectBroadCastReceiver();
         IntentFilter filter = new IntentFilter();
@@ -72,12 +72,7 @@ public class MainHomeActivity extends BaseActivity implements View.OnClickListen
         filter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
         filter.addAction("android.net.wifi.STATE_CHANGE");
         registerReceiver(mNetConnectBroadCastReceiver,filter);
-
-
     }
-
-
-
 
 
     private void initView() {
