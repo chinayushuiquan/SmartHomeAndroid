@@ -13,7 +13,7 @@ import java.util.List;
 
 import kap.com.smarthome.android.R;
 import kap.com.smarthome.android.communication.bean.base.DATABean.RoomData;
-import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseMsgBase;
+import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseBaseMsg;
 import kap.com.smarthome.android.communication.http.constants.HTTPMsgINSIP;
 import kap.com.smarthome.android.communication.http.constants.HttpResponseCode;
 import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
@@ -22,7 +22,6 @@ import kap.com.smarthome.android.presenter.constants.AllConstants;
 import kap.com.smarthome.android.presenter.constants.AllVariable;
 import kap.com.smarthome.android.presenter.control.DataBaseHandle;
 import kap.com.smarthome.android.presenter.control.ServerCommunicationHandle;
-import kap.com.smarthome.android.ui.adapter.RoomIconChoseGvAdapter;
 import kap.com.smarthome.android.ui.adapter.RoomLinkedDevicesAdapter;
 import kap.com.smarthome.android.ui.view.MyLoadingDialog;
 import kap.com.smarthome.android.ui.view.MyTopBarBuilder;
@@ -96,9 +95,9 @@ public class EditRoomActivity extends BaseActivity {
                     @Override
                     public void success(Object object) {
                         if(object != null) {
-                            final HTTPResponseMsgBase httpResponseMsgBase = (HTTPResponseMsgBase) object;
-                            if (httpResponseMsgBase.getBODY().getINSTP().equals(HTTPMsgINSIP.UPDATE_ROOM_RSP)) {
-                                if (httpResponseMsgBase.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)) {
+                            final HTTPResponseBaseMsg httpResponseBaseMsg = (HTTPResponseBaseMsg) object;
+                            if (httpResponseBaseMsg.getBODY().getINSTP().equals(HTTPMsgINSIP.UPDATE_ROOM_RSP)) {
+                                if (httpResponseBaseMsg.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)) {
                                     mEditRoom.setNAME(roomName);
                                     Log.e("HTTP", "success: 更新房间 = " + mEditRoom.toString());
                                     DataBaseHandle.updateOneRoom(mEditRoom);

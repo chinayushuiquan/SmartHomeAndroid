@@ -1,26 +1,26 @@
-package kap.com.smarthome.android.communication.bean.extend.HTTP;
+package kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.AllData;
 
 import java.util.List;
 
-import kap.com.smarthome.android.communication.bean.base.DATABean.RelayBoxData;
-import kap.com.smarthome.android.data.bean.RelayBox;
+import kap.com.smarthome.android.communication.bean.base.DATABean.AllBeanData;
+import kap.com.smarthome.android.communication.bean.base.DATABean.DeviceData;
 
 /**
  * Created by Administrator on 2017/10/17 0017.
  */
 
-public class HTTPResponseQueryRelayBoxBody {
+public class HTTPResponseQueryAllDataBody {
 
     protected String INSTP ;
 
     protected String RESULT;
 
-    protected List<RelayBoxData> DATA;
+    protected AllBeanData DATA;
 
-    public HTTPResponseQueryRelayBoxBody() {
+    public HTTPResponseQueryAllDataBody() {
     }
 
-    public HTTPResponseQueryRelayBoxBody(String INSTP, String RESULT, List<RelayBoxData> DATA) {
+    public HTTPResponseQueryAllDataBody(String INSTP, String RESULT, AllBeanData DATA) {
         this.INSTP = INSTP;
         this.RESULT = RESULT;
         this.DATA = DATA;
@@ -42,17 +42,17 @@ public class HTTPResponseQueryRelayBoxBody {
         this.RESULT = RESULT;
     }
 
-    public List<RelayBoxData> getDATA() {
+    public AllBeanData getDATA() {
         return DATA;
     }
 
-    public void setDATA(List<RelayBoxData> DATA) {
+    public void setDATA(AllBeanData DATA) {
         this.DATA = DATA;
     }
 
     @Override
     public String toString() {
-        return "HTTPResponseQueryRelayBoxBody{" +
+        return "HTTPResponseQureyRelayBoxBody{" +
                 "INSTP='" + INSTP + '\'' +
                 ", RESULT='" + RESULT + '\'' +
                 ", DATA=" + DATA +

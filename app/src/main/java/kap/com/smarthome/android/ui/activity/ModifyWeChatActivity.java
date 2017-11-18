@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import kap.com.smarthome.android.R;
-import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseMsgBase;
+import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseBaseMsg;
 import kap.com.smarthome.android.communication.http.constants.HTTPMsgINSIP;
 import kap.com.smarthome.android.communication.http.constants.HttpResponseCode;
 import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
@@ -92,7 +92,7 @@ public  class ModifyWeChatActivity extends BaseActivity{
             @Override
             public void success(Object object) {
                 if(object != null){
-                    final HTTPResponseMsgBase httpResponseMsgLogin = (HTTPResponseMsgBase) object;
+                    final HTTPResponseBaseMsg httpResponseMsgLogin = (HTTPResponseBaseMsg) object;
                     if(httpResponseMsgLogin.getBODY().getINSTP().equals(HTTPMsgINSIP.EDIT_USERINFO_ACK)){
                         if(httpResponseMsgLogin.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)){
                             runOnUiThread(new Runnable() {

@@ -142,6 +142,18 @@ public class HTTPMsgINSIP {
     public static final String UPDATE_ROOM_RSP= "UPDATEROOMRSP";
 
 
+  /**
+   * 获取刷新房间
+   */
+
+  /*//更新房间请求命令
+  public static final String  UPDATE_ROOM_REQ= "UPDATEROOMREQ";
+
+  //更新房间响应命令
+  public static final String UPDATE_ROOM_RSP= "UPDATEROOMRSP";*/
+
+
+
  //-------------------------------------中继盒子
 
     /**

@@ -1,24 +1,25 @@
-package kap.com.smarthome.android.communication.bean.base.HTTP;
+package kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.Login;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
 import kap.com.smarthome.android.communication.bean.base.JsonHeadBase;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.Login.HTTPLoginResponseBody;
 
 /**
  * Created by Administrator on 2017/10/10 0010.
  */
 
-public class HTTPResponseMsgBase{
+public class HTTPResponseLoginMsg {
 
     @JSONField(name = "HEAD" , ordinal = 1)
     private JsonHeadBase HEAD;
 
     @JSONField(name = "BODY", ordinal = 2)
-    private HTTPResponseBodyBase BODY;
+    private HTTPLoginResponseBody BODY;
 
     //private static int SERIAL_NUM=0x80000000;
 
-    public HTTPResponseMsgBase(JsonHeadBase HEAD, HTTPResponseBodyBase BODY) {
+    public HTTPResponseLoginMsg(JsonHeadBase HEAD, HTTPLoginResponseBody BODY) {
         this.HEAD = HEAD;
         this.BODY = BODY;
     }
@@ -31,11 +32,11 @@ public class HTTPResponseMsgBase{
         return this.HEAD;
     }
 
-    public void setBODY(HTTPResponseBodyBase BODY){
+    public void setBODY(HTTPLoginResponseBody BODY){
         this.BODY = BODY;
     }
 
-    public HTTPResponseBodyBase getBODY(){
+    public HTTPLoginResponseBody getBODY(){
         return this.BODY;
     }
 
@@ -57,4 +58,5 @@ public class HTTPResponseMsgBase{
             SERIAL_NUM=0x80000000;
         }
     }*/
+
 }

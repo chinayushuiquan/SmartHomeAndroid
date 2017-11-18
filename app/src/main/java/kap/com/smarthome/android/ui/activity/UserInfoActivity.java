@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import kap.com.smarthome.android.R;
 
-import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseMsgBase;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponseUpdateHeadMsg;
+import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseBaseMsg;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.UserHead.HTTPResponseUpdateHeadMsg;
 import kap.com.smarthome.android.communication.http.constants.HTTPMsgINSIP;
 import kap.com.smarthome.android.communication.http.constants.HttpResponseCode;
 import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
@@ -26,7 +26,6 @@ import kap.com.smarthome.android.presenter.control.DataBaseHandle;
 import kap.com.smarthome.android.presenter.control.ServerCommunicationHandle;
 import kap.com.smarthome.android.ui.utils.ImageUtils;
 import kap.com.smarthome.android.ui.view.CircleImageView;
-import kap.com.smarthome.android.ui.view.MyLoadingDialog;
 import kap.com.smarthome.android.ui.view.MyTopBarBuilder;
 
 /**
@@ -249,7 +248,7 @@ public class UserInfoActivity extends BaseActivity  implements View.OnClickListe
                 @Override
                 public void success(Object object) {
                     if(object != null) {
-                        final HTTPResponseMsgBase httpResponseBase = (HTTPResponseMsgBase) object;
+                        final HTTPResponseBaseMsg httpResponseBase = (HTTPResponseBaseMsg) object;
                         if (httpResponseBase.getBODY().getINSTP().equals(HTTPMsgINSIP.USER_LOGOUT_ACK)) {
                             if (httpResponseBase.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)) {
                                 runOnUiThread(new Runnable() {

@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import kap.com.smarthome.android.R;
 
-import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseMsgBase;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponseMsgLogin;
+import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseBaseMsg;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.Login.HTTPResponseLoginMsg;
 import kap.com.smarthome.android.communication.http.constants.HTTPMsgINSIP;
 import kap.com.smarthome.android.communication.http.constants.HttpResponseCode;
 import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
@@ -270,7 +270,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     @Override
                     public void success(Object object) {
                         if(object != null){
-                            final HTTPResponseMsgBase httpResponseBase = (HTTPResponseMsgBase) object;
+                            final HTTPResponseBaseMsg httpResponseBase = (HTTPResponseBaseMsg) object;
                             if(httpResponseBase.getBODY().getINSTP().equals(HTTPMsgINSIP.NEW_ACCOUNT_ACK)){
                                 if(httpResponseBase.getBODY().getRESULT().equals(SUCCESS)){
                                     runOnUiThread(new Runnable() {
@@ -286,16 +286,16 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                                                     @Override
                                                     public void success(Object object) {
                                                         if(object != null){
-                                                            final HTTPResponseMsgLogin httpResponseMsgLogin = (HTTPResponseMsgLogin) object;
-                                                            if(httpResponseMsgLogin.getBODY().getINSTP().equals(HTTPMsgINSIP.USER_LOGIN_ACK)){
-                                                                if(httpResponseMsgLogin.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)){
+                                                            final HTTPResponseLoginMsg httpResponseLoginMsg = (HTTPResponseLoginMsg) object;
+                                                            if(httpResponseLoginMsg.getBODY().getINSTP().equals(HTTPMsgINSIP.USER_LOGIN_ACK)){
+                                                                if(httpResponseLoginMsg.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)){
                                                                     runOnUiThread(new Runnable() {
                                                                         @Override
                                                                         public void run() {
                                                                             Toast.makeText(RegisterActivity.this,"登录成功!", Toast.LENGTH_SHORT).show();
 
-                                                                            String  userId =  httpResponseMsgLogin.getBODY().getUSERID();
-                                                                            String  sessionId = httpResponseMsgLogin.getBODY().getSESSIONID();
+                                                                            String  userId =  httpResponseLoginMsg.getBODY().getUSERID();
+                                                                            String  sessionId = httpResponseLoginMsg.getBODY().getSESSIONID();
 
                                                                             //使用SharePreferences保存当前登录用户的UserID
                                                                             SharedPreferencesHandle.initSharedPreferencesHandle(getApplicationContext()).saveCurrentLoginUserId(userId);
@@ -382,7 +382,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void success(Object object) {
                 if(object != null){
-                    HTTPResponseMsgBase httpResponseBase = (HTTPResponseMsgBase) object;
+                    HTTPResponseBaseMsg httpResponseBase = (HTTPResponseBaseMsg) object;
                     if(httpResponseBase.getBODY().getRESULT().equals(SUCCESS)){
                         //开启定时器，进行倒计时
                         downTimer.start();

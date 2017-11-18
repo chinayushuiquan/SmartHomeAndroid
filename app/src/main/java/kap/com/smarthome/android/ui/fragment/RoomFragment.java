@@ -6,10 +6,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.DataSetObservable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -21,11 +19,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import kap.com.smarthome.android.R;
 import kap.com.smarthome.android.communication.bean.base.DATABean.RoomData;
-import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseMsgBase;
+import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseBaseMsg;
 import kap.com.smarthome.android.communication.http.constants.HTTPMsgINSIP;
 import kap.com.smarthome.android.communication.http.constants.HttpResponseCode;
 import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
@@ -185,9 +182,9 @@ public class RoomFragment extends BaseFragment{
                     @Override
                     public void success(Object object) {
                         if(object != null){
-                            final HTTPResponseMsgBase httpResponseMsgBase = (HTTPResponseMsgBase) object;
-                            if(httpResponseMsgBase.getBODY().getINSTP().equals(HTTPMsgINSIP.DELETE_ROOM_RSP)){
-                                if(httpResponseMsgBase.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)) {
+                            final HTTPResponseBaseMsg httpResponseBaseMsg = (HTTPResponseBaseMsg) object;
+                            if(httpResponseBaseMsg.getBODY().getINSTP().equals(HTTPMsgINSIP.DELETE_ROOM_RSP)){
+                                if(httpResponseBaseMsg.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)) {
                                         deleteRoom(mRoomList.get(position));
                                         roomMainRecyclerViewAdapter.notifyItemRemoved(position);
                                         mRoomList.remove(position);
@@ -249,11 +246,19 @@ public class RoomFragment extends BaseFragment{
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
+
+                /*new Handler().postDelayed(new Runnable() {
                     public void run() {
+
                         mSwipeRefreshLayout.setRefreshing(false);
                     }
                 }, 3000);
+                */
+                /**
+                 * 查询房间
+                 */
+                ServerCommunicationHandle.queryRooms();
+
             }
         });
     }

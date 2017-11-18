@@ -1,20 +1,20 @@
-package kap.com.smarthome.android.communication.bean.extend.HTTP;
+package kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.Room;
 import kap.com.smarthome.android.communication.bean.base.JsonHeadBase;
 
 /**
  * Created by Administrator on 2017/11/13 0013.
  */
 
-public class HTTPResponseAccreditUserMsg {
+public class HTTPResponseQueryRoomMsg {
 
     private JsonHeadBase HEAD;
 
-    private HTTPResponseAccreditUserBody BODY;
+    private HTTPResponseQueryRoomBody BODY;
 
 
-    public HTTPResponseAccreditUserMsg() {}
+    public HTTPResponseQueryRoomMsg() {}
 
-    public HTTPResponseAccreditUserMsg(JsonHeadBase HEAD, HTTPResponseAccreditUserBody BODY) {
+    public HTTPResponseQueryRoomMsg(JsonHeadBase HEAD, HTTPResponseQueryRoomBody BODY) {
         this.HEAD = HEAD;
         this.BODY = BODY;
     }
@@ -27,17 +27,17 @@ public class HTTPResponseAccreditUserMsg {
         this.HEAD = HEAD;
     }
 
-    public HTTPResponseAccreditUserBody getBODY() {
+    public HTTPResponseQueryRoomBody getBODY() {
         return BODY;
     }
 
-    public void setBODY(HTTPResponseAccreditUserBody BODY) {
+    public void setBODY(HTTPResponseQueryRoomBody BODY) {
         this.BODY = BODY;
     }
 
     @Override
     public String toString() {
-        return "HTTPResponseAccreditUserMsg{" +
+        return "HTTPResponseQueryRoomMsg{" +
                 "HEAD=" + HEAD +
                 ", BODY=" + BODY +
                 '}';

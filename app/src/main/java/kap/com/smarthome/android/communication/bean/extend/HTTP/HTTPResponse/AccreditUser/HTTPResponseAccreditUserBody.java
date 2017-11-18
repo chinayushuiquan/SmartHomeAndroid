@@ -1,4 +1,4 @@
-package kap.com.smarthome.android.communication.bean.extend.HTTP;
+package kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.AccreditUser;
 
 
 /**
@@ -48,7 +48,7 @@ public class HTTPResponseAccreditUserBody {
 
     @Override
     public String toString() {
-        return "HTTPResponseAccreditUserBody{" +
+        return "HTTPResponseQueryRoomBody{" +
                 "INSTP='" + INSTP + '\'' +
                 ", RESULT='" + RESULT + '\'' +
                 ", OLDUSERID='" + OLDUSERID + '\'' +

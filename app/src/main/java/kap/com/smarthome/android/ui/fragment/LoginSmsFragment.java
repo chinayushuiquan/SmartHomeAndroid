@@ -15,8 +15,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import kap.com.smarthome.android.R;
-import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseMsgBase;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponseMsgLogin;
+import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseBaseMsg;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.Login.HTTPResponseLoginMsg;
 import kap.com.smarthome.android.communication.http.constants.HTTPMsgINSIP;
 import kap.com.smarthome.android.communication.http.constants.HttpResponseCode;
 import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
@@ -139,7 +139,7 @@ public class LoginSmsFragment extends Fragment implements View.OnClickListener{
             @Override
             public void success(Object object) {
                 if(object != null){
-                    final HTTPResponseMsgBase httpJsonMsgBase = (HTTPResponseMsgBase) object;
+                    final HTTPResponseBaseMsg httpJsonMsgBase = (HTTPResponseBaseMsg) object;
                     if(httpJsonMsgBase.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)){ //返回成功 .开启定时器，进行倒计时
                         mActivity.runOnUiThread(new Runnable() {
                             @Override
@@ -229,14 +229,14 @@ public class LoginSmsFragment extends Fragment implements View.OnClickListener{
             @Override
             public void success(Object object) {
                 if(object != null){
-                    final HTTPResponseMsgLogin httpResponseMsgLogin = (HTTPResponseMsgLogin) object;
-                    if(httpResponseMsgLogin.getBODY().getINSTP().equals(HTTPMsgINSIP.USER_LOGIN_ACK)){
-                        if(httpResponseMsgLogin.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)){
+                    final HTTPResponseLoginMsg httpResponseLoginMsg = (HTTPResponseLoginMsg) object;
+                    if(httpResponseLoginMsg.getBODY().getINSTP().equals(HTTPMsgINSIP.USER_LOGIN_ACK)){
+                        if(httpResponseLoginMsg.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)){
                             mActivity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    String  userId =  httpResponseMsgLogin.getBODY().getUSERID();
-                                    String  sessionId = httpResponseMsgLogin.getBODY().getSESSIONID();
+                                    String  userId =  httpResponseLoginMsg.getBODY().getUSERID();
+                                    String  sessionId = httpResponseLoginMsg.getBODY().getSESSIONID();
 
                                     //使用SharePreferences保存当前登录用户的UserID
                                     SharedPreferencesHandle.initSharedPreferencesHandle(mActivity.getApplicationContext()).saveCurrentLoginUserId(userId);
@@ -250,10 +250,10 @@ public class LoginSmsFragment extends Fragment implements View.OnClickListener{
                                     }
                                 }
                             });
-                        }else if(httpResponseMsgLogin.getBODY().getRESULT().equals(HttpResponseCode.VERIFI_CODE_ERROE)){
+                        }else if(httpResponseLoginMsg.getBODY().getRESULT().equals(HttpResponseCode.VERIFI_CODE_ERROE)){
                             Toast.makeText(mActivity,"验证码错误!", Toast.LENGTH_SHORT).show();
                             dismissLoadingDialog();
-                        }else if(httpResponseMsgLogin.getBODY().getRESULT().equals(HttpResponseCode.DATA_ERROR)){
+                        }else if(httpResponseLoginMsg.getBODY().getRESULT().equals(HttpResponseCode.DATA_ERROR)){
                             Toast.makeText(mActivity,"数据非法!", Toast.LENGTH_SHORT).show();
                             dismissLoadingDialog();
                         }

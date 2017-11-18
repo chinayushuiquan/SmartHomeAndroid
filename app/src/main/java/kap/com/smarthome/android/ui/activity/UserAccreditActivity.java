@@ -1,7 +1,6 @@
 package kap.com.smarthome.android.ui.activity;
 
 import android.content.Intent;
-import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.view.View;
@@ -9,10 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import kap.com.smarthome.android.R;
-import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseMsgBase;
-import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
 import kap.com.smarthome.android.presenter.constants.AllConstants;
-import kap.com.smarthome.android.presenter.control.ServerCommunicationHandle;
 import kap.com.smarthome.android.presenter.utils.DataLegitimacyCheckUtils;
 import kap.com.smarthome.android.ui.view.MyTopBarBuilder;
 
