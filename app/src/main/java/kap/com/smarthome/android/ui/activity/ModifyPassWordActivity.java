@@ -7,14 +7,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import kap.com.smarthome.android.R;
-import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseMsgBase;
+import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseBaseMsg;
 import kap.com.smarthome.android.communication.http.constants.HTTPMsgINSIP;
 import kap.com.smarthome.android.communication.http.constants.HttpResponseCode;
 import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
 import kap.com.smarthome.android.presenter.constants.AllVariable;
-import kap.com.smarthome.android.presenter.control.DataBaseHandle;
 import kap.com.smarthome.android.presenter.control.ServerCommunicationHandle;
-import kap.com.smarthome.android.ui.view.MyLoadingDialog;
 import kap.com.smarthome.android.ui.view.MyTopBarBuilder;
 
 /**
@@ -100,7 +98,7 @@ public  class ModifyPassWordActivity extends BaseActivity{
             @Override
             public void success(Object object) {
                 if(object != null){
-                    final HTTPResponseMsgBase httpResponseMsgLogin = (HTTPResponseMsgBase) object;
+                    final HTTPResponseBaseMsg httpResponseMsgLogin = (HTTPResponseBaseMsg) object;
                     if(httpResponseMsgLogin.getBODY().getINSTP().equals(HTTPMsgINSIP.CHANGE_PWD_ACK)){
                         if(httpResponseMsgLogin.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)){
                             runOnUiThread(new Runnable() {

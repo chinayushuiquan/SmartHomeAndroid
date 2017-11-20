@@ -1,4 +1,4 @@
-package kap.com.smarthome.android.communication.bean.extend.HTTP;
+package kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPRequest;
 
 
 import java.util.List;
@@ -6,20 +6,18 @@ import java.util.List;
 import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPRequestBodyBase;
 
 /**
- * Created by yushq on 2017/9/29 0029.
- * 注册新用户的 实体类
+ * Created by Administrator on 2017/10/10 0010.
  */
 
-public class HTTPRegisterRequestBody extends HTTPRequestBodyBase {
+public class HTTPModifyUserInfoRequestBody  extends HTTPRequestBodyBase {
 
-    //注册类型
-    private String REGTYPE;
+    //修改用户信息动作枚举
+    private String ACTIONTYPE;
 
-    //远程登录账号
-    private String LOGINNAME;
+    private String USERID;
 
-    //用户密码
-    private String PASSWORD;
+    //昵称
+    private String NICKNAME;
 
     //用户的电话号码，需符合国际手机号码格式如“86-13112345678
     private String TELEPHONE;
@@ -37,15 +35,15 @@ public class HTTPRegisterRequestBody extends HTTPRequestBodyBase {
     private String EMAIL;
 
 
-    public HTTPRegisterRequestBody() {
+    public HTTPModifyUserInfoRequestBody() {
 
     }
 
-    public HTTPRegisterRequestBody(String INSTP, String APPKEY, String CHECKSUM, String RESULT, List DATA, String REGTYPE, String LOGINNAME, String PASSWORD, String TELEPHONE, String VALIDCODE, String WECHAT, String QQ, String EMAIL) {
+    public HTTPModifyUserInfoRequestBody(String INSTP, String APPKEY, String CHECKSUM, String RESULT, List DATA, String ACTIONTYPE, String USERID, String NICKNAME, String TELEPHONE, String VALIDCODE, String WECHAT, String QQ, String EMAIL) {
         super(INSTP, APPKEY, CHECKSUM, RESULT, DATA);
-        this.REGTYPE = REGTYPE;
-        this.LOGINNAME = LOGINNAME;
-        this.PASSWORD = PASSWORD;
+        this.ACTIONTYPE = ACTIONTYPE;
+        this.USERID = USERID;
+        this.NICKNAME = NICKNAME;
         this.TELEPHONE = TELEPHONE;
         this.VALIDCODE = VALIDCODE;
         this.WECHAT = WECHAT;
@@ -53,28 +51,28 @@ public class HTTPRegisterRequestBody extends HTTPRequestBodyBase {
         this.EMAIL = EMAIL;
     }
 
-    public String getREGTYPE() {
-        return REGTYPE;
+    public String getACTIONTYPE() {
+        return ACTIONTYPE;
     }
 
-    public void setREGTYPE(String REGTYPE) {
-        this.REGTYPE = REGTYPE;
+    public void setACTIONTYPE(String ACTIONTYPE) {
+        this.ACTIONTYPE = ACTIONTYPE;
     }
 
-    public String getLOGINNAME() {
-        return LOGINNAME;
+    public String getUSERID() {
+        return USERID;
     }
 
-    public void setLOGINNAME(String LOGINNAME) {
-        this.LOGINNAME = LOGINNAME;
+    public void setUSERID(String USERID) {
+        this.USERID = USERID;
     }
 
-    public String getPASSWORD() {
-        return PASSWORD;
+    public String getNICKNAME() {
+        return NICKNAME;
     }
 
-    public void setPASSWORD(String PASSWORD) {
-        this.PASSWORD = PASSWORD;
+    public void setNICKNAME(String NICKNAME) {
+        this.NICKNAME = NICKNAME;
     }
 
     public String getTELEPHONE() {
@@ -117,12 +115,11 @@ public class HTTPRegisterRequestBody extends HTTPRequestBodyBase {
         this.EMAIL = EMAIL;
     }
 
-    @Override
     public String toString() {
-        return "HTTPRegisterBody{" +
-                "REGTYPE='" + REGTYPE + '\'' +
-                ", LOGINNAME='" + LOGINNAME + '\'' +
-                ", PASSWORD='" + PASSWORD + '\'' +
+        return "HTTPModifyUserInfoRequestBody{" +
+                "ACTIONTYPE='" + ACTIONTYPE + '\'' +
+                ", USERID='" + USERID + '\'' +
+                ", NICKNAME='" + NICKNAME + '\'' +
                 ", TELEPHONE='" + TELEPHONE + '\'' +
                 ", VALIDCODE='" + VALIDCODE + '\'' +
                 ", WECHAT='" + WECHAT + '\'' +

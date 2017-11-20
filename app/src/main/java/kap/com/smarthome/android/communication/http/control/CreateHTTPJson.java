@@ -1,7 +1,6 @@
 package kap.com.smarthome.android.communication.http.control;
 
-import android.util.Log;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import kap.com.smarthome.android.communication.bean.base.DATABean.DeviceData;
@@ -14,13 +13,13 @@ import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPRequestBodyBas
 import kap.com.smarthome.android.communication.bean.base.DATABean.RoomData;
 import kap.com.smarthome.android.communication.bean.base.JsonHeadBase;
 
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPExitLoginRequestBody;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPLoginRequestBody;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPModifyPassWordRequestBody;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPModifyUserInfoRequestBody;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPRegisterRequestBody;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPUpdateHeadRequestBody;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPVerificodeRequestBody;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPRequest.HTTPExitLoginRequestBody;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPRequest.HTTPLoginRequestBody;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPRequest.HTTPModifyPassWordRequestBody;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPRequest.HTTPModifyUserInfoRequestBody;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPRequest.HTTPRegisterRequestBody;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPRequest.HTTPUpdateHeadRequestBody;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPRequest.HTTPVerificodeRequestBody;
 import kap.com.smarthome.android.communication.http.constants.HTTPMsgINSIP;
 import kap.com.smarthome.android.communication.udp.constants.UDPContants;
 import kap.com.smarthome.android.data.bean.IRKey;
@@ -212,7 +211,7 @@ public class CreateHTTPJson {
     }
 
     /**
-     * 构建删除房间的数据
+     * 构建修改房间的数据
      * @param datas
      * @return
      */
@@ -220,6 +219,19 @@ public class CreateHTTPJson {
         HTTPRequestBodyBase<RoomData>  httpRequestBodyBase = new HTTPRequestBodyBase<>();
         httpRequestBodyBase.setINSTP(HTTPMsgINSIP.UPDATE_ROOM_REQ);
         httpRequestBodyBase.setDATA(datas);
+        return  httpRequestBodyBase;
+    }
+
+
+    /**
+     * 构建拉取房间数据的body
+     * @param roomDataList
+     * @return
+     */
+    public static HTTPRequestBodyBase buildQueryRooms(List<RoomData> roomDataList) {
+        HTTPRequestBodyBase<RoomData>  httpRequestBodyBase = new HTTPRequestBodyBase<>();
+        httpRequestBodyBase.setINSTP(HTTPMsgINSIP.UPDATE_ROOM_REQ);
+        httpRequestBodyBase.setDATA(roomDataList);
         return  httpRequestBodyBase;
     }
 
@@ -379,18 +391,29 @@ public class CreateHTTPJson {
      * 删除场景的时候只需要传入 场景ID
      */
     public static HTTPRequestBodyBase buildDeleteScenes(Scenes scenes) {
-
              List<ScenesData>  scenesDataList = BeanDataConvertUtils.convertToScenesData(scenes);
-
              HTTPRequestBodyBase<ScenesData> httpRequestBodyBase = new HTTPRequestBodyBase<>();
-
              httpRequestBodyBase.setINSTP("DELETESCENEREQ");
-
              httpRequestBodyBase.setDATA(scenesDataList);
-
              return httpRequestBodyBase;
 
     }
+
+
+    /**
+     * 查询场景
+     * @return
+     */
+    public static HTTPRequestBodyBase buildqueryScenes() {
+        List<ScenesData>  scenesDataList = new ArrayList<>();
+        HTTPRequestBodyBase<ScenesData> httpRequestBodyBase = new HTTPRequestBodyBase<>();
+        httpRequestBodyBase.setINSTP("DELETESCENEREQ");
+        httpRequestBodyBase.setDATA(scenesDataList);
+        return httpRequestBodyBase;
+
+    }
+
+    //------------------------------------------------------------------------------
 
 
     /**
@@ -420,4 +443,7 @@ public class CreateHTTPJson {
         return requestBodyBase;
 
     }
+
+
+
 }

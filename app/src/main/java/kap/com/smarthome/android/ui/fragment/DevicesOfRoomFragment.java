@@ -187,11 +187,14 @@ public class DevicesOfRoomFragment extends BaseFragment {
                 ServerCommunicationHandle.queryDevices(deviceDatas, new UIHttpCallBack() {
                     @Override
                     public void success(Object object) {
+
                         mSwipeRefreshLayout.setRefreshing(false);
+
                     }
 
                     @Override
                     public void failure(Object object) {
+
                         mSwipeRefreshLayout.setRefreshing(false);
                     }
                 });

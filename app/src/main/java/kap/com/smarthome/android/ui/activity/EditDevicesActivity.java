@@ -13,7 +13,7 @@ import java.util.List;
 
 import kap.com.smarthome.android.R;
 import kap.com.smarthome.android.communication.bean.base.DATABean.DeviceData;
-import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseMsgBase;
+import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseBaseMsg;
 import kap.com.smarthome.android.communication.http.constants.HTTPMsgINSIP;
 import kap.com.smarthome.android.communication.http.constants.HttpResponseCode;
 import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
@@ -137,9 +137,9 @@ public class EditDevicesActivity extends  BaseActivity{
                     @Override
                     public void success(Object object) {
                         if(object != null) {
-                            final HTTPResponseMsgBase httpResponseMsgBase = (HTTPResponseMsgBase) object;
-                            if (httpResponseMsgBase.getBODY().getINSTP().equals(HTTPMsgINSIP.UPDATE_ROOM_RSP)) {
-                                if (httpResponseMsgBase.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)) {
+                            final HTTPResponseBaseMsg httpResponseBaseMsg = (HTTPResponseBaseMsg) object;
+                            if (httpResponseBaseMsg.getBODY().getINSTP().equals(HTTPMsgINSIP.UPDATE_ROOM_RSP)) {
+                                if (httpResponseBaseMsg.getBODY().getRESULT().equals(HttpResponseCode.SUCCESS)) {
                                     mEditDevice.setNAME(deviceName);
                                     Log.e("HTTP", "success: 更新设备 = " + mEditDevice.toString());
                                     DataBaseHandle.updateOnDevice(mEditDevice);

@@ -123,8 +123,33 @@ public class BeanDataConvertUtils {
             roomList.add(room);
         }
         return roomList;
+    }
 
 
+    /**
+     * Room  convert to  RoomDataList
+     *
+     * 服务器返回的房间数据 转换成本地数据存储
+     */
+
+    public  static List<RoomData> convertToRoomData(List<Room> roomList){
+
+        //由于 本地的实体类 字段不一致，需要进行转换
+        List<RoomData> roomDataList  = new ArrayList<>();
+
+        for (int i = 0; i < roomList.size() ; i++){
+
+            Room room = roomList.get(i);
+
+            RoomData roomData = new RoomData();
+            roomData.setID(room.getGUID());
+            roomData.setNAME(room.getNAME());
+            roomData.setROOMORDER(room.getROOM_ORDER()+"");
+            roomData.setTYPE(room.getTYPE()+"");
+
+            roomDataList.add(roomData);
+        }
+        return roomDataList;
     }
 
     /**

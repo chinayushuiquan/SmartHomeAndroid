@@ -23,8 +23,8 @@ import kap.com.smarthome.android.R;
 import kap.com.smarthome.android.communication.bean.base.DATABean.RelayBoxData;
 import kap.com.smarthome.android.communication.bean.base.UDP.UDPReceiverData;
 import kap.com.smarthome.android.communication.bean.base.UDP.UDPResponseMsgBase;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponseDataMsgClass;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponseQueryRelayBoxBody;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.RelayBox.HTTPResponseQueryRelayBoxBody;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.RelayBox.HTTPResponseQueryRelayBoxMsg;
 import kap.com.smarthome.android.communication.http.constants.HTTPMsgINSIP;
 import kap.com.smarthome.android.communication.http.constants.HttpResponseCode;
 import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
@@ -38,7 +38,6 @@ import kap.com.smarthome.android.presenter.control.RelayBoxUDPHandle;
 import kap.com.smarthome.android.presenter.control.ServerCommunicationHandle;
 import kap.com.smarthome.android.presenter.utils.JsonUtils;
 import kap.com.smarthome.android.ui.adapter.RelayBoxRecyclerViewAdapter;
-import kap.com.smarthome.android.ui.view.MyLoadingDialog;
 import kap.com.smarthome.android.ui.view.MyPopupWindow;
 import kap.com.smarthome.android.ui.view.MyTopBarBuilder;
 
@@ -57,7 +56,6 @@ public class RelayBoxActivity extends BaseActivity {
 
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
-    private MyLoadingDialog myLoadingDialog;
 
 
     /**
@@ -106,23 +104,21 @@ public class RelayBoxActivity extends BaseActivity {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
                 final List<RelayBoxData> relayBoxDataList = new ArrayList<RelayBoxData>();
-
                 //刷新中继盒子列表 查询的时候data 中的数据为空
                 ServerCommunicationHandle.queryRelayBoxs(relayBoxDataList , new UIHttpCallBack() {
                     @Override
                     public void success(Object object) {
                         if(object != null) {
                             //返回的数据中包括一个Data数据
-                            final HTTPResponseDataMsgClass httpResponseMsgBase = (HTTPResponseDataMsgClass) object;
-                            HTTPResponseQueryRelayBoxBody httpResponseQueryRelayBoxBody = (HTTPResponseQueryRelayBoxBody)httpResponseMsgBase.getBODY();
+                            final HTTPResponseQueryRelayBoxMsg response = (HTTPResponseQueryRelayBoxMsg) object;
+                            HTTPResponseQueryRelayBoxBody body = response.getBODY();
 
-                            if(httpResponseQueryRelayBoxBody.getINSTP().equals(HTTPMsgINSIP.FIND_RELAYBOX_ANDUSER_RSP)) {
+                            if(body.getINSTP().equals(HTTPMsgINSIP.FIND_RELAYBOX_ANDUSER_RSP)) {
 
-                                 if (httpResponseQueryRelayBoxBody.getRESULT().equals(HttpResponseCode.SUCCESS)) {
+                                 if (body.getRESULT().equals(HttpResponseCode.SUCCESS)) {
 
-                                     List<RelayBoxData> relayBoxesData = httpResponseQueryRelayBoxBody.getDATA();
+                                     List<RelayBoxData> relayBoxesData = body.getDATA();
 
                                      //如果请求的数据不为空 ，并且数据不等于本地数据
                                      if(relayBoxesData  != null && relayBoxesData.size() != mRelayBoxes.size()){
@@ -131,20 +127,21 @@ public class RelayBoxActivity extends BaseActivity {
                                          List<RelayBox> relayBoxes = BeanDataConvertUtils.convertToRelayBox(relayBoxesData);
 
                                          if(DataBaseHandle.refreshRelayBoxTable(relayBoxes)){
-
                                              updateUI(relayBoxes);
-
                                              Toast.makeText(RelayBoxActivity.this, "刷新列表成功", Toast.LENGTH_SHORT).show();
+                                             mSwipeRefreshLayout.setRefreshing(false);
                                          }
                                      }else{
                                          Toast.makeText(RelayBoxActivity.this, "数据已经最新", Toast.LENGTH_SHORT).show();
+                                         mSwipeRefreshLayout.setRefreshing(false);
                                      }
-                                }
+                                }else{
+                                     Toast.makeText(RelayBoxActivity.this, "获取数据失败！", Toast.LENGTH_SHORT).show();
+                                     mSwipeRefreshLayout.setRefreshing(false);
+                                 }
                             }
                         }
-                        mSwipeRefreshLayout.setRefreshing(false);
                     }
-
                     @Override
                     public void failure(Object object) {
                         mSwipeRefreshLayout.setRefreshing(false);
@@ -152,6 +149,8 @@ public class RelayBoxActivity extends BaseActivity {
                 });
             }
         });
+
+
     }
 
 
@@ -226,7 +225,6 @@ public class RelayBoxActivity extends BaseActivity {
 
             @Override
             public void onDeleteIconClick(View view, final int position) {
-
                 if(AllVariable.CONNECT_RELAY) {
 
                     mDeleteRelayBox = mRelayBoxes.get(position);
@@ -237,8 +235,9 @@ public class RelayBoxActivity extends BaseActivity {
 
                     //删除中继盒子的 UDP指令  成功之后回调 uiDeleteRelayBoxSuccessCallback方法
                     RelayBoxUDPHandle.deleteRelayBox(AllVariable.CURRENT_USER_ID, mDeleteRelayBox.getBOX_ID(), mDeleteRelayBox.getIP());
+
                 }else {
-                    Toast.makeText(RelayBoxActivity.this , "只能在局域网环境删除中继盒子" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(RelayBoxActivity.this , "只能在局域网环境删除中继盒子" , Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -323,16 +322,16 @@ public class RelayBoxActivity extends BaseActivity {
                     }
                 });
 
-
                 //2017-10-17 删除中继盒子
                 relayBoxDatas = new ArrayList<RelayBoxData>();
                 RelayBoxData relayBoxData = new RelayBoxData();
                 relayBoxData.setID(mDeleteRelayBox.getGUID());
                 relayBoxDatas.add(relayBoxData);
+
                 //2. 删除云端的对应的数据
                 ServerCommunicationHandle.deleteRelayBox(relayBoxDatas ,new UIHttpCallBack(){
                     @Override
-                    public void success(Object object) {
+                    public void success(Object object){
                         dismissLoadingDialog();
                     }
 

@@ -1,4 +1,4 @@
-package kap.com.smarthome.android.communication.bean.extend.HTTP;
+package kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.UserHead;
 
 
 import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseBodyBase;
@@ -7,14 +7,14 @@ import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseBodyBa
  * Created by Administrator on 2017/10/10 0010.
  */
 
-public class HTTPUpdateHeadResponseBody extends HTTPResponseBodyBase {
+public class HTTPResponseUpdateHeadBody extends HTTPResponseBodyBase {
 
     private String HEADLOGOURL;
 
-    public HTTPUpdateHeadResponseBody() {
+    public HTTPResponseUpdateHeadBody() {
     }
 
-    public HTTPUpdateHeadResponseBody(String INSTP, String RESULT, String HEADLOGOURL) {
+    public HTTPResponseUpdateHeadBody(String INSTP, String RESULT, String HEADLOGOURL) {
         super(INSTP, RESULT);
         this.HEADLOGOURL = HEADLOGOURL;
     }
@@ -29,7 +29,7 @@ public class HTTPUpdateHeadResponseBody extends HTTPResponseBodyBase {
 
     @Override
     public String toString() {
-        return "HTTPUpdateHeadResponseBody{" +
+        return "HTTPResponseUpdateHeadBody{" +
                 "HEADLOGOURL='" + HEADLOGOURL + '\'' +
                 '}';
     }

@@ -1,4 +1,4 @@
-package kap.com.smarthome.android.communication.bean.extend.HTTP;
+package kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.Devices;
 
 import java.util.List;
 

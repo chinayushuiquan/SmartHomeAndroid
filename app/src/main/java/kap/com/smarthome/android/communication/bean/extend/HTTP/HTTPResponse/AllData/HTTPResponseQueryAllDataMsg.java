@@ -1,4 +1,4 @@
-package kap.com.smarthome.android.communication.bean.extend.HTTP;
+package kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.AllData;
 import kap.com.smarthome.android.communication.bean.base.JsonHeadBase;
 
 /**

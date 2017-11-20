@@ -1,6 +1,5 @@
 package kap.com.smarthome.android.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.TextInputEditText;
@@ -18,13 +17,11 @@ import kap.com.smarthome.android.communication.bean.base.DATABean.IrkeysData;
 import kap.com.smarthome.android.communication.bean.base.DATABean.RelayBoxData;
 import kap.com.smarthome.android.communication.bean.base.DATABean.RoomData;
 import kap.com.smarthome.android.communication.bean.base.DATABean.ScenesData;
-import kap.com.smarthome.android.communication.bean.base.DATABean.ScenesDevicesData;
-import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseMsgBase;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponseAccreditUserBody;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponseAccreditUserMsg;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponseDataMsgClass;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponseQueryAllDataBody;
-import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponseQueryAllDataMsg;
+import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseBaseMsg;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.AccreditUser.HTTPResponseAccreditUserBody;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.AccreditUser.HTTPResponseAccreditUserMsg;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.AllData.HTTPResponseQueryAllDataBody;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.AllData.HTTPResponseQueryAllDataMsg;
 import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
 import kap.com.smarthome.android.data.bean.Devices;
 import kap.com.smarthome.android.data.bean.IRKey;
@@ -242,7 +239,7 @@ public  class UserAccreditDoneActivity extends  BaseActivity{
             @Override
             public void success(Object object) {
                 if(object != null){
-                    HTTPResponseMsgBase httpResponseBase = (HTTPResponseMsgBase) object;
+                    HTTPResponseBaseMsg httpResponseBase = (HTTPResponseBaseMsg) object;
                     if(httpResponseBase.getBODY().getRESULT().equals("0")){
                         //开启定时器，进行倒计时
                        // downTimer.start();

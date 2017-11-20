@@ -3,18 +3,20 @@ package kap.com.smarthome.android.presenter.control;
 import java.util.List;
 
 import kap.com.smarthome.android.communication.bean.base.DATABean.DeviceData;
-import kap.com.smarthome.android.communication.bean.base.DATABean.IrkeysData;
 import kap.com.smarthome.android.communication.bean.base.DATABean.RelayBoxData;
 import kap.com.smarthome.android.communication.bean.base.DATABean.RoomData;
-import kap.com.smarthome.android.communication.bean.base.DATABean.ScenesData;
+import kap.com.smarthome.android.communication.bean.base.HTTP.HTTPResponseBaseMsg;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.AccreditUser.HTTPResponseAccreditUserMsg;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.Devices.HTTPResponseQueryDevicesMsg;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.Login.HTTPResponseLoginMsg;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.RelayBox.HTTPResponseQueryRelayBoxMsg;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.Room.HTTPResponseQueryRoomMsg;
+import kap.com.smarthome.android.communication.bean.extend.HTTP.HTTPResponse.UserHead.HTTPResponseUpdateHeadMsg;
 import kap.com.smarthome.android.communication.http.control.BuildHTTPJsonData;
 import kap.com.smarthome.android.communication.http.control.CreateHTTPJson;
 import kap.com.smarthome.android.communication.http.doapi.DoHTTPApi;
 import kap.com.smarthome.android.communication.http.listener.UIHttpCallBack;
-import kap.com.smarthome.android.data.bean.Devices;
 import kap.com.smarthome.android.data.bean.IRKey;
-import kap.com.smarthome.android.data.bean.RelayBox;
-import kap.com.smarthome.android.data.bean.Room;
 import kap.com.smarthome.android.data.bean.Scenes;
 import kap.com.smarthome.android.data.bean.ScenesDevice;
 import kap.com.smarthome.android.data.bean.ScenesTrigger;
@@ -69,15 +71,13 @@ public class ServerCommunicationHandle {
 //----------------------------------------------------用户信息-----------------------------
     /**
      *  进行用户注册
-     *
      * response body: "BODY":{"INSTP":"NEWACCOUNTACK","RESULT":"0"}
-     *
      */
     public static void registerUserAccount(String account , String phoneNum, String verification,
                                            String password, String type ,UIHttpCallBack uiHttpCallBack){
         String  registerAccount = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildSignUpUserAccountBody(account , phoneNum,  verification, password , type));
-        DoHTTPApi.httpPostBaseClazz(USER_URL , registerAccount , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(USER_URL , registerAccount , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
 
@@ -100,7 +100,7 @@ public class ServerCommunicationHandle {
     public static void getRegisterVerification(String phoneNum , String localCode , String getType , UIHttpCallBack uiHttpCallBack) {
         String  getVerification = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildGetVerifiCodeBody(phoneNum,localCode,getType));
-        DoHTTPApi.httpPostBaseClazz(USER_URL , getVerification , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(USER_URL , getVerification , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
 
@@ -115,13 +115,10 @@ public class ServerCommunicationHandle {
      response body: BODY":{"INSTP":"USERLOGINACK","USERID":"4028b8815e2c95c0015e2c9663180000"," SESSIONID ":"4028b8815e2c95c0015e2c9663180000","RESULT":"0"}
      *
      */
-    public static void loginRemoteServer(String account , String phoneNum, String verification,
-                                         String password, String type ,UIHttpCallBack uiHttpCallBack) {
-
+    public static void loginRemoteServer(String account , String phoneNum, String verification, String password, String type ,UIHttpCallBack uiHttpCallBack) {
         String loginRemote = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildLoginRemoteBody(account , phoneNum,  verification, password , type));
-
-        DoHTTPApi.httpPostLoginClazz(USER_URL , loginRemote, uiHttpCallBack);
+        DoHTTPApi.httpPostLoginClazz(USER_URL , loginRemote, uiHttpCallBack ,HTTPResponseLoginMsg.class);
     }
 
 
@@ -134,7 +131,7 @@ public class ServerCommunicationHandle {
     public static void exitServerLogin(String sessionId , UIHttpCallBack uiHttpCallBack){
         String loginRemote = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildExitServerLogin(sessionId));
-        DoHTTPApi.httpPostBaseClazz(USER_URL , loginRemote, uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(USER_URL , loginRemote, uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
     /**
@@ -152,7 +149,7 @@ public class ServerCommunicationHandle {
     public static void modifyUserInfo(String userId , String actionType, String info ,UIHttpCallBack uiHttpCallBack){
         String modifyReq = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildModifyUserInfoBody(userId,actionType,info));
-        DoHTTPApi.httpPostBaseClazz(USER_URL , modifyReq, uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(USER_URL , modifyReq, uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
 
@@ -168,7 +165,7 @@ public class ServerCommunicationHandle {
     public static void modifyPassWord(String userId , String mNewPasswordStr , String mOldPasswordStr, UIHttpCallBack uiHttpCallBack) {
         String modifyPassWord = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildModifyPassWord(userId , mNewPasswordStr, mOldPasswordStr));
-        DoHTTPApi.httpPostBaseClazz(USER_URL , modifyPassWord, uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(USER_URL , modifyPassWord, uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
 
@@ -184,7 +181,7 @@ public class ServerCommunicationHandle {
     public static void updateUserHead(String userId , String base64_head , UIHttpCallBack uiHttpCallBack) {
         String updateHead = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildUpdateHeadLogin(userId , base64_head));
-        DoHTTPApi.httpUpdateHeadClazz(USER_URL , updateHead, uiHttpCallBack);
+        DoHTTPApi.httpUpdateHeadClazz(USER_URL , updateHead, uiHttpCallBack , HTTPResponseUpdateHeadMsg.class);
     }
 
     /**
@@ -207,7 +204,7 @@ public class ServerCommunicationHandle {
     public static void reqOtherUserAccredit(String accredit_account, String verify_code, int  req_type , UIHttpCallBack uiHttpCallBack) {
         String user_accredit = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildUserAccredit(accredit_account , verify_code , req_type ));
-        DoHTTPApi.httpReqOtherUserAccredit(USER_URL , user_accredit, uiHttpCallBack);
+        DoHTTPApi.httpReqOtherUserAccredit(USER_URL , user_accredit, uiHttpCallBack , HTTPResponseAccreditUserMsg.class);
     }
 
 
@@ -234,7 +231,7 @@ public class ServerCommunicationHandle {
     public static void addRoom(List<RoomData> rooms , UIHttpCallBack uiHttpCallBack){
         String addRooms = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildAddRooms(rooms));
-        DoHTTPApi.httpPostBaseClazz(ROOM_URL, addRooms , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(ROOM_URL, addRooms , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
 
@@ -248,7 +245,7 @@ public class ServerCommunicationHandle {
     public static void deleteRooms(List<RoomData> rooms , UIHttpCallBack uiHttpCallBack) {
         String deleteRooms = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildDeleteRooms(rooms));
-        DoHTTPApi.httpPostBaseClazz(ROOM_URL , deleteRooms , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(ROOM_URL , deleteRooms , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
 
@@ -261,7 +258,17 @@ public class ServerCommunicationHandle {
     public static void updateOneRoom(List<RoomData> rooms , UIHttpCallBack uiHttpCallBack){
         String  updateRooms = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildUpdateRooms(rooms));
-        DoHTTPApi.httpPostBaseClazz(ROOM_URL , updateRooms , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(ROOM_URL , updateRooms , uiHttpCallBack , HTTPResponseBaseMsg.class);
+    }
+
+
+    /**
+     * 查询房间
+     */
+    public static void queryRooms(List<RoomData> roomDataList , UIHttpCallBack uiHttpCallBack) {
+        String  queryRoomJson= BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
+                CreateHTTPJson.buildQueryRooms(roomDataList));
+        DoHTTPApi.httpPostQueryRooms(ROOM_URL , queryRoomJson , uiHttpCallBack , HTTPResponseQueryRoomMsg.class);
     }
 
 
@@ -274,11 +281,9 @@ public class ServerCommunicationHandle {
      *
      */
     public static void addRelayBox(List<RelayBoxData> relayBoxDatas, UIHttpCallBack uiHttpCallBack) {
-
         String  addRelayBoxStr = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildAddRelayBox(relayBoxDatas));
-
-        DoHTTPApi.httpPostBaseClazz(RELAY_BOX_URL , addRelayBoxStr , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(RELAY_BOX_URL , addRelayBoxStr , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
     /**
@@ -289,7 +294,7 @@ public class ServerCommunicationHandle {
     public static void deleteRelayBox(List<RelayBoxData> relayBoxDatas, UIHttpCallBack uiHttpCallBack) {
         String  deleteRelayBoxStr = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildDeleteRelayBox(relayBoxDatas));
-        DoHTTPApi.httpPostBaseClazz(RELAY_BOX_URL, deleteRelayBoxStr , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(RELAY_BOX_URL, deleteRelayBoxStr , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
 
@@ -302,7 +307,7 @@ public class ServerCommunicationHandle {
     public static void  updateRelayBox(List<RelayBoxData> relayBoxDatas, UIHttpCallBack uiHttpCallBack) {
         String  updateRelayBoxStr = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildUpdateRelayBox(relayBoxDatas));
-        DoHTTPApi.httpPostBaseClazz(RELAY_BOX_URL , updateRelayBoxStr , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(RELAY_BOX_URL , updateRelayBoxStr , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
 
@@ -314,7 +319,7 @@ public class ServerCommunicationHandle {
     public static void  queryRelayBoxs(List<RelayBoxData> relayBoxDatas , UIHttpCallBack uiHttpCallBack) {
         String  updateRooms = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildQueryRelayBoxs(relayBoxDatas));
-        DoHTTPApi.httpQueryRelayBoxs(RELAY_BOX_URL , updateRooms , uiHttpCallBack);
+        DoHTTPApi.httpQueryRelayBoxs(RELAY_BOX_URL , updateRooms , uiHttpCallBack , HTTPResponseQueryRelayBoxMsg.class);
     }
 
 //-------------------------------------------------------------------------------有关设备的服务器存储
@@ -327,7 +332,7 @@ public class ServerCommunicationHandle {
     public static void addDevices(List<DeviceData> devicesDatas, UIHttpCallBack uiHttpCallBack) {
         String  addDevicesStr = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildAddDevices(devicesDatas));
-        DoHTTPApi.httpPostBaseClazz(DEVICES_URL , addDevicesStr , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(DEVICES_URL , addDevicesStr , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
 
@@ -339,7 +344,7 @@ public class ServerCommunicationHandle {
     public static void deleteDevices(List<DeviceData> devicesDatas, UIHttpCallBack uiHttpCallBack) {
         String  deleteDevicesStr = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildDeleteDevices(devicesDatas));
-        DoHTTPApi.httpPostBaseClazz(DEVICES_URL, deleteDevicesStr , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(DEVICES_URL, deleteDevicesStr , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
 
@@ -351,7 +356,7 @@ public class ServerCommunicationHandle {
     public static void updateDevices(List<DeviceData> devicesDatas, UIHttpCallBack uiHttpCallBack) {
         String  addDevicesStr = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildUpdateDevices(devicesDatas));
-        DoHTTPApi.httpPostBaseClazz(DEVICES_URL, addDevicesStr , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(DEVICES_URL, addDevicesStr , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
 
@@ -363,9 +368,11 @@ public class ServerCommunicationHandle {
     public static void queryDevices(List<DeviceData> devicesDatas, UIHttpCallBack uiHttpCallBack) {
         String  queryDevicesStr = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildQueryDevices(devicesDatas));
-        DoHTTPApi.httpQueryDevices(DEVICES_URL , queryDevicesStr , uiHttpCallBack);
+        DoHTTPApi.httpQueryDevices(DEVICES_URL , queryDevicesStr , uiHttpCallBack , HTTPResponseQueryDevicesMsg.class);
     }
 //----------------------------------------------------------------------红外数据--------------------
+
+
     /**
      *
      *
@@ -373,12 +380,9 @@ public class ServerCommunicationHandle {
      * "BODY":{"INSTP":"FINDDEVICERSP","RESULT":"0", “DATA”:[“ID”:”1111”,其他参数省略] }
      */
     public static void addIrLearnKeysData(List<IRKey> irkeyList , UIHttpCallBack uiHttpCallBack) {
-
         String  addIrKeysDataStr = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
-
                 CreateHTTPJson.buildQueryIrKeysData(irkeyList));
-
-        DoHTTPApi.httpQueryDevices(DEVICES_URL , addIrKeysDataStr , uiHttpCallBack);
+        DoHTTPApi.httpQueryDevices(DEVICES_URL , addIrKeysDataStr , uiHttpCallBack , HTTPResponseQueryDevicesMsg.class);
     }
 
 
@@ -399,7 +403,7 @@ public class ServerCommunicationHandle {
     public static void addScenes(Scenes mNewScenes, List<ScenesDevice> mNewScenesDeviceList, List<ScenesTrigger> mNewScenesTriggerList , UIHttpCallBack uiHttpCallBack) {
         String  addScenesStr = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildAddScenes(mNewScenes ,mNewScenesDeviceList ,mNewScenesTriggerList));
-        DoHTTPApi.httpPostBaseClazz(SCENES_URL , addScenesStr , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(SCENES_URL , addScenesStr , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
 
@@ -411,7 +415,7 @@ public class ServerCommunicationHandle {
     public static void deleteScenes(Scenes scenes , UIHttpCallBack uiHttpCallBack) {
         String  addScenesStr = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildDeleteScenes(scenes));
-        DoHTTPApi.httpPostBaseClazz(SCENES_URL , addScenesStr , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(SCENES_URL , addScenesStr , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
 
     /**
@@ -424,8 +428,19 @@ public class ServerCommunicationHandle {
     public static void updateScenes(Scenes mEditScenes, List<ScenesDevice> mEditScenesDeviceList, List<ScenesTrigger> mEditScenesTriggerList, UIHttpCallBack uiHttpCallBack) {
         String  addScenesStr = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
                 CreateHTTPJson.buildUpdateScenes(mEditScenes ,mEditScenesDeviceList ,mEditScenesTriggerList));
-        DoHTTPApi.httpPostBaseClazz(SCENES_URL , addScenesStr , uiHttpCallBack);
+        DoHTTPApi.httpPostBaseClazz(SCENES_URL , addScenesStr , uiHttpCallBack , HTTPResponseBaseMsg.class);
     }
+
+
+    /**
+     * 查询场景
+     */
+    public static void queryScenes(UIHttpCallBack uiHttpCallBack) {
+        String  addScenesStr = BuildHTTPJsonData.buildData(CreateHTTPJson.buildHTTPJsonHead(),
+                CreateHTTPJson.buildqueryScenes());
+        DoHTTPApi.httpPostBaseClazz(SCENES_URL , addScenesStr , uiHttpCallBack , HTTPResponseBaseMsg.class);
+    }
+
 
 
 
@@ -436,7 +451,7 @@ public class ServerCommunicationHandle {
      * @param uiHttpCallBack
      */
     public static void controlDevice(String control_json ,UIHttpCallBack uiHttpCallBack) {
-        DoHTTPApi.httpControlDevices(PENETRATE_URL, control_json , uiHttpCallBack);
+        DoHTTPApi.httpControlDevices(PENETRATE_URL, control_json , uiHttpCallBack , HTTPResponseQueryDevicesMsg.class);
 
     }
 
@@ -447,7 +462,7 @@ public class ServerCommunicationHandle {
      * @param uiHttpCallBack
      */
     public static void controlScenes(String control_json ,UIHttpCallBack uiHttpCallBack) {
-        DoHTTPApi.httpControlDevices(PENETRATE_URL, control_json , uiHttpCallBack);
+        DoHTTPApi.httpControlSenes(PENETRATE_URL, control_json , uiHttpCallBack , HTTPResponseQueryDevicesMsg.class);
 
     }
 
